@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>VIP Standar — Akses Seumur Hidup | Premium Lifetime</title>
+    <!-- Font Awesome 6 (Free CDN) untuk ikon premium & konsisten -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Premium Variables & Smooth Dark/Light Mode */
+        :root {
+            /* Dark Mode (Rich & Elegant) */
+            --bg-page: radial-gradient(circle at 10% 20%, #0a0f1e, #03060f);
+            --card-bg: rgba(18, 25, 45, 0.82);
+            --card-bg-secondary: rgba(12, 18, 30, 0.92);
+            --border-subtle: rgba(255, 215, 100, 0.2);
+            --text-primary: #f0f3fc;
+            --text-secondary: #cddcff;
+            --text-muted: #8b9acf;
+            --gold-accent: #FFDF84;
+            --gold-glow: rgba(255, 215, 0, 0.2);
+            --badge-active-bg: rgba(0, 230, 150, 0.18);
+            --badge-active-text: #b3ffdf;
+            --grad-header: linear-gradient(125deg, #101624, #080c1a);
+            --table-border: rgba(255, 220, 100, 0.2);
+            --check-color: #6effb0;
+            --btn-support-bg: linear-gradient(95deg, #1f2a46, #121a30);
+            --btn-support-border: rgba(255, 200, 80, 0.7);
+            --highlight-device: rgba(255, 200, 70, 0.12);
+            --shadow-premium: 0 30px 40px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 220, 100, 0.1) inset;
+            --glow-gold: 0 0 12px rgba(255, 220, 90, 0.3);
+        }
+
+        /* Light Mode — Clean & Luxurious */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-page: linear-gradient(145deg, #f6f3ee 0%, #f0ede8 100%);
+                --card-bg: rgba(255, 252, 245, 0.96);
+                --card-bg-secondary: #fffdf9;
+                --border-subtle: rgba(199, 160, 70, 0.25);
+                --text-primary: #1e1b16;
+                --text-secondary: #3c3527;
+                --text-muted: #746b58;
+                --gold-accent: #B57C1C;
+                --gold-glow: rgba(181, 124, 28, 0.12);
+                --badge-active-bg: #e1f9ef;
+                --badge-active-text: #1d6b42;
+                --grad-header: linear-gradient(135deg, #fff8eb, #fef3e0);
+                --table-border: #e9dfcf;
+                --check-color: #2b6e46;
+                --btn-support-bg: linear-gradient(95deg, #ffffff, #fef4e6);
+                --btn-support-border: #dbb45c;
+                --highlight-device: #fff3e0;
+                --shadow-premium: 0 20px 35px -15px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(181, 124, 28, 0.2) inset;
+                --glow-gold: 0 4px 12px rgba(181, 124, 28, 0.2);
+            }
+        }
+
+        body {
+            background: var(--bg-page);
+            font-family: 'Inter', system-ui, 'Segoe UI', 'Poppins', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            padding: 32px 20px 60px;
+            color: var(--text-primary);
+            transition: background 0.3s ease, color 0.2s;
+            min-height: 100vh;
+        }
+
+        /* Main Card with glassmorphism & premium depth */
+        .vip-container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(2px);
+            border-radius: 3rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-premium);
+            border: 1px solid var(--border-subtle);
+            transition: transform 0.2s ease, box-shadow 0.3s;
+        }
+
+        .vip-container:hover {
+            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.4), var(--shadow-premium);
+        }
+
+        /* header with shine animation */
+        .vip-header {
+            background: var(--grad-header);
+            padding: 2rem 2rem 1.8rem;
+            border-bottom: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vip-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, rgba(0,0,0,0) 80%);
+            animation: slowShift 10s infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes slowShift {
+            0% { transform: translateX(-10%) translateY(-10%); opacity: 0.4; }
+            100% { transform: translateX(10%) translateY(10%); opacity: 0.9; }
+        }
+
+        .badge-vip-active {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gold-glow);
+            padding: 8px 24px;
+            border-radius: 80px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--gold-accent);
+            border: 1px solid var(--gold-accent);
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(4px);
+            box-shadow: var(--glow-gold);
+            animation: gentlePulse 2s infinite;
+        }
+
+        @keyframes gentlePulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 100, 0.2); border-color: var(--gold-accent); }
+            70% { box-shadow: 0 0 0 8px rgba(255, 215, 100, 0); border-color: #ffdf99; }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 100, 0); }
+        }
+
+        .badge-vip-active i {
+            font-size: 0.9rem;
+            animation: starSpin 4s infinite linear;
+        }
+
+        @keyframes starSpin {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(12deg) scale(1.1); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .vip-header h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(130deg, #FFFFFF, var(--gold-accent), #ffe6b3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.6rem;
+            animation: fadeSlideUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .user-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 14px;
+            animation: fadeSlideUp 0.6s ease;
+        }
+
+        .user-name {
+            font-weight: 600;
+            background: var(--card-bg-secondary);
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(4px);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-name i {
+            color: var(--gold-accent);
+            font-size: 1rem;
+        }
+
+        .status-active {
+            background: var(--badge-active-bg);
+            color: var(--badge-active-text);
+            padding: 7px 22px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(111, 207, 151, 0.4);
+            animation: pulseGlow 2.2s infinite;
+        }
+
+        .status-active i {
+            font-size: 0.85rem;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(111, 207, 151, 0.3);}
+            70% { box-shadow: 0 0 0 6px rgba(111, 207, 151, 0);}
+        }
+
+        /* forever-badge premium style */
+        .forever-badge {
+            background: linear-gradient(115deg, var(--card-bg-secondary), rgba(0,0,0,0.2));
+            border-radius: 36px;
+            padding: 16px 24px;
+            margin: 1.2rem 2rem 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            border-left: 6px solid var(--gold-accent);
+            font-size: 0.95rem;
+            backdrop-filter: blur(6px);
+            transition: all 0.2s;
+            animation: fadeIn 0.7s ease;
+        }
+
+        .forever-icon {
+            font-size: 2.2rem;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+            animation: floatIcon 3s infinite ease-in-out;
+            color: var(--gold-accent);
+        }
+
+        @keyframes floatIcon {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* section styling premium */
+        .hak-akses-section {
+            padding: 1.8rem 2rem 1.2rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(120deg, var(--text-primary), var(--gold-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title h2 i {
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: var(--gold-accent);
+            font-size: 1.5rem;
+        }
+
+        .more-link {
+            color: var(--gold-accent);
+            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            border-bottom: 1px dashed transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .more-link i {
+            font-size: 0.7rem;
+            transition: transform 0.2s;
+        }
+
+        .more-link:hover {
+            border-bottom-color: var(--gold-accent);
+            transform: translateX(3px);
+        }
+
+        .more-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* tabel dengan animasi row */
+        .hak-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .hak-table th, .hak-table td {
+            padding: 16px 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--table-border);
+            transition: background 0.2s;
+            vertical-align: middle;
+        }
+
+        .hak-table tr {
+            transition: all 0.2s;
+        }
+
+        .hak-table tr:hover td {
+            background: var(--highlight-device);
+        }
+
+        .check-yes {
+            color: var(--check-color);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+        .check-yes i {
+            font-size: 1.2rem;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        .device-badge {
+            background: var(--highlight-device);
+            border-radius: 40px;
+            padding: 5px 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            backdrop-filter: blur(2px);
+        }
+
+        .device-badge i {
+            font-size: 0.8rem;
+        }
+
+        .unlock-highlight {
+            color: var(--gold-accent);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* feature grid with glassy effect */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 30px 0 18px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 2rem;
+            padding: 1.3rem 1.5rem;
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(2px);
+        }
+
+        .feature-item {
+            flex: 1;
+            min-width: 150px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            padding: 6px 8px;
+            border-radius: 50px;
+        }
+
+        .feature-item:hover {
+            transform: translateX(5px);
+            background: var(--gold-glow);
+        }
+
+        .feature-icon {
+            font-size: 1.6rem;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+            width: 2rem;
+            text-align: center;
+            color: var(--gold-accent);
+        }
+
+        /* tombol dukung modder dengan animasi premium */
+        .support-modder {
+            margin: 24px 2rem 2rem;
+        }
+
+        .btn-support {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            width: 100%;
+            background: var(--btn-support-bg);
+            border: 1.5px solid var(--btn-support-border);
+            padding: 18px 0;
+            border-radius: 80px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            text-decoration: none;
+            box-shadow: var(--glow-gold);
+            letter-spacing: 0.3px;
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-support i {
+            font-size: 1.3rem;
+            transition: transform 0.2s;
+        }
+
+        .btn-support:hover {
+            transform: translateY(-3px) scale(1.01);
+            border-color: var(--gold-accent);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 215, 100, 0.3);
+            gap: 24px;
+        }
+
+        .btn-support:hover i {
+            transform: scale(1.1);
+        }
+
+        .btn-support:active {
+            transform: scale(0.98);
+        }
+
+        /* footer */
+        .footer-note {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            padding: 1.2rem 1rem 1.8rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 0.2rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* Animations */
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* responsive adjustments */
+        @media (max-width: 650px) {
+            body {
+                padding: 20px 14px 40px;
+            }
+            .vip-header h1 {
+                font-size: 2rem;
+            }
+            .hak-table th, .hak-table td {
+                font-size: 0.78rem;
+                padding: 12px 5px;
+            }
+            .feature-grid {
+                flex-direction: column;
+                gap: 14px;
+                padding: 1rem;
+            }
+            .forever-badge {
+                margin: 1rem 1.2rem 0 1.2rem;
+                padding: 12px 16px;
+            }
+            .hak-akses-section {
+                padding: 1.2rem 1.2rem 0.8rem;
+            }
+            .support-modder {
+                margin: 18px 1.2rem 1.8rem;
+            }
+            .btn-support {
+                padding: 14px 0;
+                font-size: 1rem;
+            }
+            .section-title h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        .info-note {
+            background: var(--card-bg-secondary);
+            border-radius: 28px;
+            padding: 12px 18px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-left: 3px solid var(--gold-accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .info-note i {
+            color: var(--gold-accent);
+            font-size: 1rem;
+        }
+        .text-icon-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hak-table td i.fa-check-circle, .hak-table td i.fa-infinity {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="vip-container">
+    <!-- HEADER: VIP Aktif Selamanya dengan Font Awesome ikon -->
+    <div class="vip-header">
+        <div class="badge-vip-active">
+            <i class="fas fa-crown"></i> 
+            VIP Standar · Lifetime
+            <i class="fas fa-infinity"></i>
+        </div>
+        <h1><i class="fas fa-gem"></i> Pusat VIP</h1>
+        <div class="user-row">
+            <span class="user-name"><i class="fas fa-user-astronaut"></i> <strong>ModderGabut</strong> <i class="fas fa-meteor"></i></span>
+            <span class="status-active"><i class="fas fa-unlock-alt"></i> VIP Standar Aktif Penuh</span>
+        </div>
+    </div>
+
+    <!-- Banner keaktifan tanpa batas desain mewah dengan font icon -->
+    <div class="forever-badge">
+        <div class="forever-icon"><i class="fas fa-infinity"></i><i class="fas fa-bolt"></i><i class="fas fa-star-of-life"></i></div>
+        <div>
+            <strong style="font-size: 1.05rem; letter-spacing: -0.2px;"><i class="fas fa-clock"></i> Akses Seumur Hidup · Premium Selamanya</strong><br>
+            <span style="font-size: 0.75rem; opacity: 0.85;">Nikmati semua fitur VIP Standar tanpa batas, tanpa perpanjangan, tanpa biaya. Lifetime seamless.</span>
+        </div>
+    </div>
+
+    <!-- Hanya bagian Standar: Perbandingan Hak & Fitur Eksklusif dengan ikon konsisten -->
+    <div class="hak-akses-section">
+        <div class="section-title">
+            <h2><i class="fas fa-list-check"></i> Hak Istimewa <span style="font-size: 0.85rem; font-weight: 500;">(VIP Standar)</span></h2>
+            <a href="#" class="more-link" id="moreInfoLink">Lebih detail <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <table class="hak-table">
+            <thead>
+                <tr><th><i class="fas fa-gem"></i> Fitur Premium</th><th><i class="fas fa-toggle-on"></i> Status</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><i class="fas fa-ban"></i> Bebas iklan sepenuhnya</td><td class="check-yes"><i class="fas fa-check-circle"></i> Aktif</td></tr>
+                <tr><td><i class="fas fa-tv"></i> Tonton dengan kualitas VIP (server side)</td><td class="check-yes"><i class="fas fa-check-circle"></i> Aktif</td></tr>
+                <tr><td><i class="fas fa-download"></i> Unduh dengan kualitas VIP</td><td class="check-yes"><i class="fas fa-check-circle"></i> Aktif</td></tr>
+                <tr><td><i class="fas fa-rocket"></i> Percepat unduhan & multi-thread</td><td class="check-yes"><i class="fas fa-check-circle"></i> Aktif</td></tr>
+                <tr><td><i class="fas fa-layer-group"></i> Unduh film / episode sekaligus (batch)</td><td class="check-yes"><i class="fas fa-check-circle"></i> Aktif</td></tr>
+                <tr><td><i class="fas fa-chalkboard-user"></i> Cast ke TV tanpa batasan</td><td>✔ Aktif <span style="font-size: 0.7rem;">(not 4K)</span></td></tr>
+                <tr><td class="not-4k"><i class="fas fa-microchip"></i> Perangkat Masuk (Ponsel, TV, PC)</td><td class="not-4k">Ultra HD siap</td></tr>
+                <tr><td><i class="fas fa-mobile-alt"></i> Jumlah Perangkat</td><td><span class="device-badge"><i class="fas fa-hashtag"></i> 5 Perangkat <i class="fas fa-circle-info"></i></span></td></tr>
+                <tr><td><i class="fas fa-lock-open"></i> Buka Kunci Drama Pendek & Tanpa Batas</td><td class="unlock-highlight"><i class="fas fa-infinity"></i> Aktif & Full akses</td></tr>
+                <tr><td><i class="fas fa-gift"></i> Konten eksklusif VIP</td><td class="check-yes"><i class="fas fa-check-circle"></i> Selamanya</td></tr>
+            </tbody>
+        </table>
+
+        <!-- feature grid dengan ikon font awesome yang rapi -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span class="feature-icon"><i class="fas fa-users"></i></span>
+                <span>Fitur Together (nonton bareng realtime)</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon"><i class="fas fa-download"></i></span>
+                <span>Tonton offline (unduh & nikmati)</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon"><i class="fas fa-desktop"></i></span>
+                <span>Dukungan Android TV (Premium Playback)</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon"><i class="fas fa-shield-alt"></i></span>
+                <span>Episode Shorts terbuka tanpa VIP & VPN</span>
+            </div>
+        </div>
+
+        <!-- Catatan kecil lebih premium dengan ikon -->
+        <div class="info-note">
+            <i class="fas fa-diamond"></i>
+            <span><strong>AKTIF SELAMANYA</strong> — tidak ada pembayaran berulang, tidak ada tagihan. Nikmati semua benefit VIP Standar tanpa batas waktu + prioritas support lifetime.</span>
+            <i class="fas fa-heart" style="color: var(--gold-accent);"></i>
+        </div>
+    </div>
+
+    <!-- Tombol Dukung Modder dengan ikon font & interaksi -->
+    <div class="support-modder">
+        <button id="supportBtn" class="btn-support">
+            <i class="fas fa-handshake"></i> Dukung Modder <i class="fas fa-star"></i>
+            <i class="fas fa-arrow-up-right-from-square"></i>
+        </button>
+        <p style="font-size: 0.7rem; text-align: center; margin-top: 14px; color: var(--text-muted); font-weight: 500;">
+            <i class="fas fa-link"></i> Klik untuk mendukung perjalanan kreatif — <strong style="color: var(--gold-accent);">bio.link/bangyadi</strong>
+        </p>
+    </div>
+
+    <div class="footer-note">
+        <i class="far fa-copyright"></i> VIP Standar Lifetime · Akses penuh tanpa batasan · Selamanya aktif <i class="fas fa-infinity"></i>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Tombol DUKUNG MODDER membuka tautan premium dengan efek smooth
+        const supportButton = document.getElementById('supportBtn');
+        if (supportButton) {
+            supportButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                supportButton.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    supportButton.style.transform = '';
+                }, 120);
+                window.open('https://bio.link/bangyadi', '_blank', 'noopener,noreferrer');
+            });
+        }
+
+        // Link "Lebih detail" memberikan notifikasi premium friendly
+        const moreLink = document.getElementById('moreInfoLink');
+        if (moreLink) {
+            moreLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const toastMsg = document.createElement('div');
+                toastMsg.innerHTML = '<i class="fas fa-crown" style="margin-right: 8px;"></i> ✨ VIP Standar: semua fitur premium aktif seumur hidup, termasuk unduhan cepat, batch, tanpa iklan, akses semua drama pendek & konten eksklusif. Tidak ada kadaluwarsa.';
+                toastMsg.style.position = 'fixed';
+                toastMsg.style.bottom = '30px';
+                toastMsg.style.left = '50%';
+                toastMsg.style.transform = 'translateX(-50%)';
+                toastMsg.style.backgroundColor = 'var(--card-bg)';
+                toastMsg.style.color = 'var(--text-primary)';
+                toastMsg.style.padding = '12px 24px';
+                toastMsg.style.borderRadius = '60px';
+                toastMsg.style.fontSize = '0.85rem';
+                toastMsg.style.fontWeight = '600';
+                toastMsg.style.border = '1px solid var(--gold-accent)';
+                toastMsg.style.backdropFilter = 'blur(20px)';
+                toastMsg.style.zIndex = '999';
+                toastMsg.style.boxShadow = '0 12px 24px rgba(0,0,0,0.2)';
+                toastMsg.style.maxWidth = '85%';
+                toastMsg.style.textAlign = 'center';
+                toastMsg.style.display = 'flex';
+                toastMsg.style.alignItems = 'center';
+                toastMsg.style.justifyContent = 'center';
+                document.body.appendChild(toastMsg);
+                setTimeout(() => {
+                    toastMsg.style.opacity = '0';
+                    setTimeout(() => toastMsg.remove(), 400);
+                }, 3200);
+            });
+        }
+
+        // animasi entry untuk baris tabel
+        const rows = document.querySelectorAll('.hak-table tbody tr');
+        rows.forEach((row, idx) => {
+            row.style.animation = `fadeSlideUp 0.3s ease ${idx * 0.03}s backwards`;
+        });
+        const foreverDiv = document.querySelector('.forever-badge');
+        if(foreverDiv) foreverDiv.style.animation = `fadeSlideUp 0.5s ease 0.1s backwards`;
+        const featureGrid = document.querySelector('.feature-grid');
+        if(featureGrid) featureGrid.style.animation = `fadeIn 0.8s ease`;
+    })();
+</script>
+</body>
+</html>
